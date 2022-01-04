@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" type ="text/css" href="daily-orders.css">
+    <title>Fiyat Güncelleme</title>
+  </head>
+  <body>
+    <!-- full page burada baslıyor -->
+        <!-- Menüler burada başlıyor -->
+        <div class="menu-displayed-div">
+            <li class="upgrade-clicks" id="display-menu"><a href="#">Menüler</a></li>
+            <table id="menu-displayed" class="not-displayed">
+                <tr>
+                    <td>Menü 1 - Ekmek Arası Tavuk Döner + Patates + Ayran(20cl)</td>
+                </tr>
+                <tr>
+                    <td>Menü 2 - Ekmek Arası Et Döner + Patates + Ayran(20cl)</td>
+                   
+                </tr>
+                <tr>
+                    <td>Menü 3 - Karışık Sandviç + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 4 - Yarım Ekmek Karışık Tost + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 5 - Karışık Ayvalık Tost + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 6 - Ekmek Arası Tavuk Ciğer + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 7 - Ekmek Arası Köfte + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 8 - Dana Kasap Sucuk + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 9 - 120Gr Tavuk Döner + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 10 - Tavuk İskender(120gr) + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 11 - 120Gr Et Döner + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 12 - İskender Et Döner + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 13 - Izgara Köfte(200gr) + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 14 - Tavuk CİĞER(200gr) + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 15 - Dört(4) Adet Ekmek Arası Tavuk + İçecek(1L)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 16 - Dört(4) Adet Ekmek Arası Et + İçecek (1L)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 17 - Dört(4) Adet Karışık Sandviç + İçecek (1L)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 18 - Dört(4) Adet Ekmek Arası Köfte + İçecek (1L)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 19 - Tereyağlı Tavuklu Pilav + Ayran(30cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 20 - Zurna Tavuk Dürüm(120gr) + Patates + Ayran(20cl)</td>
+                    
+                </tr>
+                <tr>
+                    <td>Menü 21 - Zurna ET Dürüm(120gr) + Patates + Ayran(20cl)</td>
+                </tr> 
+            </table>
+        </div>
+        <!-- Etler burada baslıyor -->
+        <div class="et-displayed">
+        <li class="upgrade-clicks"><a href="" id="display-et">Et Dönerler</a></li>
+        <table id="et-displayed-screen" class="not-displayed-et">
+            <tr>
+                <td>Yarım Et</td>
+            </tr>
+            <tr>
+                <td>Dürüm Et</td>
+            </tr>
+            <tr>
+                <td>ÇİFT Lavaş Et</td>
+            </tr>
+            <tr>
+                <td>Bazlama Et</td>
+            </tr>
+            <tr>
+                <td>Pita Et</td>
+            </tr>
+            <tr>
+                <td>3/4 Ekmek Arası Et</td>
+            </tr>
+            <tr>
+                <td>Zurna Et</td>
+            </tr>
+            <tr>
+                <td>İskender Et</td>
+            </tr>
+        </table>
+        </div>
+        <!-- Tavuklar burada baslıyor -->
+        <div class="tavuk-displayed">
+        <li class="upgrade-clicks"><a href="" id="display-tavuk">Tavuk Dönerler</a></li>
+        <table id="tavuk-displayed-screen" class="not-displayed-tavuk">
+            <tr>
+                <td>Yarım Tavuk</td>
+            </tr>
+            <tr>
+                <td>Dürüm Tavuk</td>
+            </tr>
+            <tr>
+                <td>ÇİFT Lavaş Et</td>
+            </tr>
+            <tr>
+                <td>Bazlama Et</td>
+            </tr>
+            <tr>
+                <td>Pita Et</td>
+            </tr>
+            <tr>
+                <td>3/4 Ekmek Arası Et</td>
+            </tr>
+            <tr>
+                <td>Zurna Et</td>
+            </tr>
+            <tr>
+                <td>İskender Et</td>
+            </tr>
+        </table>
+        </div>
+        <!-- Tostlar burada baslıyor -->
+        <div class = "tost-displayed">
+        <li class="upgrade-clicks"><a href="" id="display-tost">Tost ve Sandviç</a></li>
+        <table id="tost-displayed-screen">
+            <tr>
+                <td>Kaşarlı Ayvalık</td>
+            </tr>
+            <tr>
+                <td>Karışık Ayvalık</td>
+            </tr>
+            <tr>
+                <td>Karışık Bazlama Ayvalık</td>
+            </tr>
+            <tr>
+                <td>Kaşarlı Bazlama Ayvalık</td>
+            </tr>
+            <tr>
+                <td>Bazlama Kasap Sucuk</td>
+            </tr>
+        </table>
+        </div>
+        <!-- Köfteler burada baslıyor -->
+        <div class="kofte-displayed">
+        <li class="upgrade-clicks"><a href="" id="display-kofte">Köfteler</a></li>
+        <ul id="kofte-displayed-screen">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+        </div>
+        <!-- İcecekler burada baslıyor -->
+        <div class="icecek-displayed">
+        <li class="upgrade-clicks"><a href="" id="display-icecek">İçecekler</a></li>
+        <ul id="icecek-displayed-screen">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+        </div>
+        <!-- Full page bu tagde bitiyor -->
+  </body>
+  <script src="upgrading.js"></script>
+
+</html>

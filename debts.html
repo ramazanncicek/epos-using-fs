@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" type ="text/css" href="daily-orders.css">
+    <title>Günlük Siparişler</title>
+  </head>
+  <body>
+    <div class="main-nav-div">
+      <ul id="main-nav-ul">
+        <li class="main-nav-bar" id="new-customer-reg"><a href="#">Yeni Müşteri Ekle</a></li>
+        <li class="main-nav-bar"><a href="order-screen-takeaway.html">Yeni Sipariş(GEL-AL)</a></li>
+        <li class="main-nav-bar"><a href="couriers.html">Kuryeler ve Tüm Gel-Al Siparişleri</a></li>
+        <li class="main-nav-bar" id="daily-orders-click"><a href="#">Günlük Siparişler</a></li>
+        <li class="main-nav-bar" id="send-by-number"><a href="#">Numara ile Gönder</a></li>
+        <li class="main-nav-bar" id="all-debts"><a href="#">Cariler</a></li>
+      </ul>
+    </div>
+    <div class="main-page-order" id="all-debts-div">
+    <table id="all-debts-table">
+    </table>  
+    </div>
+  </body>
+  <script src="debts.js"></script>
+
+</html>

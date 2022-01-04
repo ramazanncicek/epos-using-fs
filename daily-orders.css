@@ -1,0 +1,212 @@
+body {
+    background-color: #8FAFF8;
+}
+
+.main-nav-div{
+    width:100%;
+    height:60px;
+    background-color: #E8E169;
+}
+#main-nav-ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.main-nav-bar{
+    float:left;
+    margin: 0;
+}
+.main-nav-bar a {
+  margin: 0;
+  display: block;
+  padding: 21px;
+  background-color: #E8E169;
+  color: black;
+  text-decoration: none;
+}
+.main-nav-bar a:hover{
+    background-color: white;
+    color: black;
+}
+.subnav-container {
+    position: relative;
+    display: inline-block;
+}
+.subnav-content {
+    display: none;
+    background-color: white;
+}
+.subnav-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#additional-menu:hover .subnav-content {
+    display:block;
+}
+
+.main-page-order {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+}
+#daily-order-table {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    margin-top: -15px;
+}
+#daily-order-table tr td:nth-child(1) {
+    width: 2%;
+    padding: 20px 0 20px 0;
+}
+#daily-order-table tr td:nth-child(2) {
+    width: 11%;
+    padding: 20px 0 20px 0;
+}
+#daily-order-table tr td:nth-child(3) {
+    width: 40%;
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+#daily-order-table tr td:nth-child(4) {
+    height: 5px;
+    width: 11%;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-weight: bolder;
+}
+#daily-order-table tr td:nth-child(5) {
+    width: 10%;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-weight: bolder;
+}
+#daily-order-table tr td:nth-child(6) {
+    width: 10%;
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+#daily-order-table tr td:nth-child(7) {
+    width: 10%;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-weight: bold;
+}
+ #daily-order-table button:first-child {
+    padding: 10px;
+    margin-right: 5px;
+    float: left;
+} 
+#daily-order-table button:last-child {
+    padding: 10px;
+    margin-right: 5px;
+    float: right;
+}
+.all-orders-trs {
+    padding: 15px;
+}
+.all-orders-trs:hover {
+    background-color: blanchedalmond;
+}
+#daily-cash-amount {
+    font-weight: bold;
+    font-size: 23px;
+    text-decoration: underline;
+}
+#daily-take-away-amount {
+    font-weight: bold;
+    font-size: 23px;
+    text-decoration: underline;
+}
+/* Debts Screen */
+#all-debts-table {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    margin-top: -15px;
+}
+/* Upgrading Prices */
+.upgrade-clicks {
+    list-style-type: none;
+    margin: 20px;
+    padding: 10px;
+}
+.upgrade-clicks:hover {
+    background-color: white;
+}
+.upgrade-clicks a {
+    text-decoration: none;
+    color: black;
+}
+#display-menu:hover .menu-displayed {
+    display:block;
+}
+#display-menu:hover {
+    background-color: yellow;
+}
+/* Hidden Divs of Upgrading */
+/* #menu-displayed {
+    display:none;
+} */
+.not-displayed {
+    display:none;
+}
+.main-page-order div {
+    margin: 10px;
+    padding: 10px;
+}
+.not-displayed-et {
+    display:none;
+}
+.not-displayed-tavuk {
+    display:none;
+}
+.not-displayed-tost {
+    display:none;
+}
+.menu-displayed {
+    display: block;
+}
+.menu-displayed tr td {
+    padding: 20px;
+    border: 3px solid black;
+}
+.et-displayed {
+    display:block;
+}
+/* #upgrade-price-ul .menu-displayed {
+    display: block;
+} */
+.menu-displayed-div {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+.et-displayed {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+.tavuk-displayed {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+.tost-displayed {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+.kofte-displayed {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+.icecek-displayed {
+    height: auto;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+

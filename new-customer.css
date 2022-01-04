@@ -1,0 +1,50 @@
+body {
+    background-color: #B2DDDD;
+}
+/* BUTTONS */
+#cancel-new-customer {
+    float: left;
+    padding: 15px;
+    border-radius: 4px;
+}
+#cancel-new-customer:hover {
+    background-color: red;
+    color: white;
+}
+#add-new-customer {
+    float: right;
+    padding: 15px;
+    border-radius: 4px;
+}
+#add-new-customer:hover {
+    background-color: green;
+    color: white;
+}
+/* BUTTONS ABOVE */
+#ul-container {
+    list-style-type: none;
+    margin-left: -30px;
+}
+.list-holders {
+    border: 1px solid transparent;
+    padding: 15px;
+}
+/* Send By Number Buttons Below*/
+#cancel-send-by-number {
+    float: left;
+    padding: 15px;
+    border-radius: 4px;
+}
+#cancel-send-by-number:hover {
+    background-color: red;
+    color: white;
+}
+#approve-send-by-number {
+    float: right;
+    padding: 15px;
+    border-radius: 4px;
+}
+#approve-send-by-number:hover {
+    background-color: green;
+    color: white;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new-customer.css">
+    <title>Yeni Müşteri</title>
+</head>
+<body>
+    <ul id="ul-container">
+    <li class="list-holders">Müşteri Adı: <input type="text" id="new-customer-name"></li>
+    <li class="list-holders">Müşteri Nosu: <input type="number" id ="new-customer-number"></li>
+    <li class="list-holders">Adresi: <input type="text" id ="new-customer-address"></li>
+    </ul>
+    <button id="cancel-new-customer">İptal Et</button>
+    <button id="add-new-customer">Müşteriyi Ekle</button>
+</body>
+<script>
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+    const remote = electron.remote;
+    const cancelNewCustomer = document.getElementById('cancel-new-customer');
+    const addNewCustomer = document.getElementById('add-new-customer');
+    let newCustomerRegister = [];
+    addNewCustomer.addEventListener('click',function(){
+        const newCustomerNumber = document.getElementById('new-customer-number').value;
+        const newCustomerName = document.getElementById('new-customer-name').value;
+        const newCustomerAddress = document.getElementById('new-customer-address').value;
+        if(newCustomerName.length<4) {
+            ipcRenderer.send('wrong-input');
+        }
+        else {
+            newCustomerRegister[0] = newCustomerNumber;
+            newCustomerRegister[1] = newCustomerName;
+            newCustomerRegister[2] = newCustomerAddress;
+            ipcRenderer.send('new-customer-added',newCustomerRegister);
+        }
+    });
+    ipcRenderer.on('unregistered-number',function(e,arg){
+        let unregisteredNumber = document.getElementById('new-customer-number');
+        unregisteredNumber.value = arg;
+    });
+    cancelNewCustomer.addEventListener('click',function(){
+        let isOkay = window.confirm('İptal Edilsin Mi ?');
+        if(isOkay){
+            ipcRenderer.send('cancel-new-customer');
+        }
+    })
+
+    
+
+</script>
+</html>

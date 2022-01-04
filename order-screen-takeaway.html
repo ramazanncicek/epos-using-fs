@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" type ="text/css" href="style.css">
+    <title>Pita Döner</title>
+  </head>
+  <body>
+    <div class="main-nav-div">
+      <ul id="main-nav-ul">
+        <li class="main-nav-bar" id="new-customer-reg"><a href="#">Yeni Müşteri Ekle</a></li>
+        <li class="main-nav-bar"><a href="order-screen-takeaway.html">Yeni Sipariş(GEL-AL)</a></li>
+        <li class="main-nav-bar"><a href="couriers.html">Kuryeler ve Tüm Gel-Al Siparişleri</a></li>
+        <li class="main-nav-bar" id="daily-orders-click"><a href="#">Günlük Siparişler</a></li>
+        <li class="main-nav-bar" id="send-by-number"><a href="#">Numara ile Gönder</a></li>
+        <!-- <li class="main-nav-bar" id="all-debts"><a href="#">Cariler</a></li> -->
+        <div class="subnav-container">
+          <li class="main-nav-bar" id="additional-menu"><a href="#">Ek Menü</a>
+          <div class="subnav-content">
+            <!-- <a href="#" id="all-debts">Cariler</a> -->
+            <a href="#" id="upgrade-price">Fiyat Güncelle</a>
+            <a href="#" id="update-couriers">Kurye Ekle/Çıkar</a>
+          </div>
+        </div>
+        </li>
+        
+      </ul>
+    </div>
+    <div class="left-nav-div">
+    <ul id="left-products">
+        <li id="et">ET</li>
+        <li id="tavuk">TAVUK</li>
+        <li id="kofte">KÖFTE</li>
+        <li id="sandvic">SANDVİÇ</li>
+        <li id="ayvalik">AYVALIK</li>
+        <li id="icecekler">İÇECEK</li>
+        <li id="menuler">MENÜLER</li>
+    </ul>
+    </div>
+    <div class="main-page-order">
+        <table id="customer-info">
+            <tr>
+                <td>Müşteri Adı:</td>
+                <td><input disabled type="text" id="reg-customer-name" value="GEL - AL"></td>
+            </tr>
+            <tr>
+                <td>Müşteri Nosu:</td>
+                <td id="reg-customer-phone">-</td>
+            </tr>
+            <tr>
+                <td>Adres:</td>
+                <td><input disabled type="text" id="reg-customer-address" value="GEL - AL"></td>
+            </tr>
+        </table>
+        <div id ="customer-orders-div">
+           <table id="customer-orders-table">
+             <tr>
+               <td>Sipariş</td>
+               <td>Adet</td>
+               <td>Tutar</td>
+             </tr>
+           </table>
+           <table id="total-price-table">
+             <tr>
+               <td></td>
+               <td>Toplam Tutar:</td>
+               <td id="total-price-per"></td>
+             </tr>
+           </table>
+        </div>
+    </div>
+    <div class="main-page-bottom">
+        <button id="send-order">ONAYLA</button>
+        <button id="cancel-order">İptal Et</button>
+        <div>
+          <textarea name="order-note" id="order-note" cols="70" rows="3" placeholder="Müşteri notunu buraya tıklayıp yazın."></textarea>
+        </div>
+        <select id="payment-method">
+          <option value="nakit">Nakit</option>
+          <option value="kredi-kartı">Kredi Kartı</option>
+          <option value="sodexo">Sodexo</option>
+          <option value="ticket">Ticket</option>
+        </select>
+        <label for="payment-method">Ödeme Şekli:</label>
+        
+    </div>
+    <script src="order-screen.js">
+      
+    </script>
+  </body>
+  <script src="new-customer.js"></script>
+
+</html>

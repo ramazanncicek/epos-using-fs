@@ -1,0 +1,15 @@
+* {
+    font-size: 15px;
+}
+table tr:hover {
+    background-color: yellow;
+}
+button {
+    padding: 10px;
+}
+.send-by-price {
+    padding: 1px;
+}
+.send-by-price-doner {
+    padding: 1px;
+}

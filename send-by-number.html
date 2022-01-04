@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new-customer.css">
+    <title>Yeni Müşteri</title>
+</head>
+<body>
+    <ul id="ul-container">
+    <li class="list-holders">Müşteri Nosu: <input type="number" id ="number-send-input"></li>
+    </ul>
+    <button id="cancel-send-by-number">İptal Et</button>
+    <button id="approve-send-by-number">Gönder</button>
+</body>
+<script>
+    const electron = require('electron');
+    const {ipcRenderer,dialog} = electron;
+    const sendButton = document.getElementById('approve-send-by-number');
+    const customerNumber = document.getElementById('number-send-input');
+    sendButton.addEventListener('click',function(){
+        ipcRenderer.send('number-send-input',customerNumber.value);
+    });
+    customerNumber.addEventListener('keydown',function(event){
+        if(event.code === "Enter"){    
+        ipcRenderer.send('number-send-input',customerNumber.value);
+        }  
+    })
+</script>
+</html>

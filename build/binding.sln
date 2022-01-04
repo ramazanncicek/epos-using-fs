@@ -1,0 +1,49 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ffi", "deps\libffi\ffi.vcxproj", "{26CE2F75-04C2-5BA5-FE24-7BD945BA193F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ffi_bindings", "ffi_bindings.vcxproj", "{C481E560-2F2F-4203-8723-F1CDEF527BA3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF} = {2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F} = {26CE2F75-04C2-5BA5-FE24-7BD945BA193F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "node_modules\node-addon-api\nothing.vcxproj", "{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(deps)", "..\deps", "{01DF18E8-89C6-A25E-0006-40F7C4BCED1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(libffi)", "..\deps\libffi", "{DC57246C-81A0-1440-4539-57C5A99C2ED7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\node_modules", "{9D350B9E-06FB-960D-859F-B43C9597383A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\node_modules\node-addon-api", "{AF891C37-E709-9CCC-0D50-0CCCC8CCC563}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+		Debug|Win32 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F}.Release|Win32.ActiveCfg = Release|Win32
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F}.Release|Win32.Build.0 = Release|Win32
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F}.Debug|Win32.Build.0 = Debug|Win32
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}.Release|Win32.ActiveCfg = Release|Win32
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}.Release|Win32.Build.0 = Release|Win32
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF}.Debug|Win32.Build.0 = Debug|Win32
+		{C481E560-2F2F-4203-8723-F1CDEF527BA3}.Release|Win32.ActiveCfg = Release|Win32
+		{C481E560-2F2F-4203-8723-F1CDEF527BA3}.Release|Win32.Build.0 = Release|Win32
+		{C481E560-2F2F-4203-8723-F1CDEF527BA3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C481E560-2F2F-4203-8723-F1CDEF527BA3}.Debug|Win32.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC57246C-81A0-1440-4539-57C5A99C2ED7} = {01DF18E8-89C6-A25E-0006-40F7C4BCED1B}
+		{26CE2F75-04C2-5BA5-FE24-7BD945BA193F} = {DC57246C-81A0-1440-4539-57C5A99C2ED7}
+		{AF891C37-E709-9CCC-0D50-0CCCC8CCC563} = {9D350B9E-06FB-960D-859F-B43C9597383A}
+		{2BDE5042-7CC6-F89C-1F96-ADC48D488BAF} = {AF891C37-E709-9CCC-0D50-0CCCC8CCC563}
+	EndGlobalSection
+EndGlobal

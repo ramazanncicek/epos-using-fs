@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" type ="text/css" href="courier.css">
+    <title>Pita Döner</title>
+  </head>
+  <body>
+    <div class="main-page-order">
+      <h2>Kurye: <span id="which-courier"></span></h2>
+       <table id="courier-orders">
+           <tr>
+               <td>Sipariş No</td>
+               <td>Müşteri</td>
+               <td>Adres</td>
+               <td>Ödeme Şekli</td>
+               <td>Tutar</td>
+           </tr>
+       </table>
+    </div>
+    <!-- <div class="main-page-bottom">
+      <span>Toplam Nakit Tutarı: <p id="total-cash-bill"></p> </span>
+      <span>Toplam Kredi Kartı Tutarı: <p id="total-card-bill"></p></span>
+    </div> -->
+    <div>
+      <p>Nakit Tutarı: <span id="total-cash-bill"></span></p>
+      <p>Kredi Kartı Tutarı: <span id="total-card-bill"></span></p>
+      <p>Toplam Tutar: <span id="total-bill"></span> TL</p>
+    </div>
+    <div>
+      <button id="pay-the-bills">Hesabı Bitir</button>
+    </div>
+  </body>
+  <script src="couriers.js"></script>
+
+</html>

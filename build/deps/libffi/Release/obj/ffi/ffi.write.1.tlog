@@ -1,0 +1,4 @@
+^..\..\..\deps\libffi\src\x86\sysv_intel.preasm
+C:\Users\Lenovo\Desktop\pita-production\build\deps\libffi\Release\obj\ffi\sysv_intel.asm
+^Release\obj\ffi\\sysv_intel.asm
+C:\Users\Lenovo\Desktop\pita-production\build\deps\libffi\Release\obj\ffi\sysv_intel.obj

@@ -1,0 +1,1 @@
+[["Gürbüz","Mustafa Kemal cd. no:149 Borkent kapıcı dairesi","Nakit","18","1"]]

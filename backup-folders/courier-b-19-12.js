@@ -1,0 +1,1 @@
+[["Gürbüz","Mustafa Kemal cd. no:149 Borkent kapıcı dairesi","Nakit","2","2"],["Gürbüz","Mustafa Kemal cd. no:149 Borkent kapıcı dairesi","Nakit","4","3"],["Gürbüz","Mustafa Kemal cd. no:149 Borkent kapıcı dairesi","Kredi Kartı","7","4"]]

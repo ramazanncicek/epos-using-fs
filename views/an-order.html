@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="an-order.css">
+    <title>Sipariş Detay</title>
+</head>
+<body>
+    <div class="main-page-order">
+        <table id="customer-info">
+            <tr>
+                <td>Müşteri Adı:</td>
+                <td id="reg-customer-name">Ramazan Çiçek</td>
+            </tr>
+            <tr>
+                <td>Müşteri Nosu:</td>
+                <td id="reg-customer-phone">-</td>
+            </tr>
+            <tr>
+                <td>Adres:</td>
+                <td id="reg-customer-address">283/12.sk no:12 Özgür Sitesi 2 - A Blok - Kat3/Daire5- ZİLE BASILMAYACAK</td>
+            </tr>
+            <tr>
+              <td>Sipariş Saati:</td>
+              <td id="reg-order-time"></td>
+            </tr>
+        </table>
+        <div id ="customer-orders-div">
+           <table id="customer-orders-table">
+             <tr>
+               <td>Sipariş</td>
+               <td>Adet</td>
+               <td>Tutar</td>
+             </tr>
+           </table>
+           <table id="total-price-table">
+             <tr>
+               <td></td>
+               <td>Toplam Tutar:</td>
+               <td id="total-price-per"></td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td>Ödeme Şekli:</td>
+                 <td id="total-price-payment"></td>
+             </tr>
+           </table>
+    </div>
+    <div>
+      <button id="print-the-order">Yazdır</button>
+      <!-- <button id="assign-for-debt">Cariye Yaz</button> -->
+    </div>
+    <table id="order-note-holder">
+      <tr>
+        <td>Sipariş Notu:</td>
+        <td id="the-order-note"></td>
+       </tr>
+    </table>
+</body>
+<script src="an-order.js"></script>
+</html>

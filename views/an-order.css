@@ -1,0 +1,69 @@
+body {
+    background-color: #B2DDDD;
+}
+.main-page-order {
+    width: 100%;
+    height: auto;
+}
+#customer-info tr td{
+    padding: 5px;
+    font-size: 20px;
+}
+#customer-orders-table{
+    width: 100%;
+}
+#customer-orders-table tr:first-child td{
+    font-size:30px;
+}
+#customer-orders-table tr td{
+    padding: 5px;
+}
+#customer-orders-table tr td:nth-child(1){
+    width: 70%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+#customer-orders-table tr td:nth-child(2){
+    text-align: center;
+    border-radius: 50%;
+}
+#customer-orders-table tr td:nth-child(3){
+    text-align: center;
+}
+/*A Break */
+#total-price-table {
+    width: 100%;
+}
+#total-price-table tr td {
+    padding: 5px;
+}
+#total-price-table tr td:nth-child(1){
+    width: 69%;
+}
+#total-price-table tr td:nth-child(2){
+    text-align: center;
+}
+#total-price-table tr td:nth-child(3){
+    text-align: center;
+}
+#total-price-per {
+    font-weight: bold;
+    font-size: 23px;
+    text-decoration: underline;
+}
+#print-the-order {
+    float: right;
+    margin-top: 50px;
+    padding: 10px;
+    margin-right: 50px;
+}
+#order-note-holder {
+    margin-top: 50px;
+}
+
+#the-order-note {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+}

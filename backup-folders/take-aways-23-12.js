@@ -1,0 +1,1 @@
+[{"Customer Name":"GEL - AL","Customer Address":"GEL - AL","Customer Number":"-","Total Price":"108","Payment":"Nakit","Orders":{"Line0":{"Food":"Izgara Köfte","Quantity":"1","Price":"36"},"Line1":{"Food":"Izgara Köfte","Quantity":"1","Price":"36"},"Line2":{"Food":"Izgara Köfte","Quantity":"1","Price":"36"}},"Order Note":"","Order Time":"13:55:00"}]

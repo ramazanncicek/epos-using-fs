@@ -1,0 +1,175 @@
+body {
+    background-color: #8FAFF8;
+}
+span {
+    width: 100%;
+    font-size: 20px;
+}
+/*Main Screen Navigation Bar Below */
+.main-nav-div{
+    width:100%;
+    height:60px;
+    background-color: #E8E169;
+}
+#main-nav-ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.main-nav-bar{
+    float:left;
+}
+.main-nav-bar a {
+  display: block;
+  padding: 21px;
+  background-color: #E8E169;
+  color: black;
+  text-decoration: none;
+}
+.main-nav-bar a:hover{
+    background-color: white;
+    color: black;
+}
+.subnav-container {
+    position: relative;
+    display: inline-block;
+}
+.subnav-content {
+    display: none;
+    background-color: white;
+}
+.subnav-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#additional-menu:hover .subnav-content {
+    display:block;
+}
+
+.main-page-order {
+    width: 90%;
+    height: 500px;
+    margin-left: 135px;
+}
+.main-page-bottom {
+    border: 1px solid black;
+    width: 100%;
+    height: 60px;
+}
+.main-page-bottom button:first-child{
+    float: right;
+    padding: 15px;
+    margin: 5px;
+}
+#cancel-order {
+    float:left;
+    padding: 15px;
+    margin: 5px;
+}
+
+.main-page-bottom select {
+    float:right;
+    margin: 15px 10px 15px 0 ;
+    font-size: 20px;
+}
+.main-page-bottom label {
+    float:right;
+    margin: 10px 10px 15px 0 ;
+    font-size: 30px;
+}
+
+/*Left Navigation Products Below */
+.left-nav-div{
+    width:10%;
+    height: 500px;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#left-products {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#left-products li {
+    padding: 25px;
+    border: 1px solid black;
+}
+#left-products li:hover{
+    background-color: white;
+    color: black;
+}
+/* Customer Information Part Below */
+#customer-info tr td{
+    padding: 5px;
+    font-size: 20px;
+}
+#customer-orders-div {
+    width: 100%;
+    height: 375px;
+    overflow-y: auto;
+}
+#customer-orders-table{
+    border: 1px solid black;
+    width: 100%;
+}
+#customer-orders-table tr:first-child td{
+    font-size:30px;
+}
+#customer-orders-table tr td{
+    padding: 5px;
+}
+#customer-orders-table tr td:nth-child(1){
+    width: 70%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+#customer-orders-table tr td:nth-child(2){
+    text-align: center;
+    border-radius: 50%;
+}
+#customer-orders-table tr td:nth-child(3){
+    text-align: center;
+}
+/*Total Price Table Below */
+#total-price-table {
+    width: 100%;
+}
+#total-price-table tr td {
+    padding: 5px;
+}
+#total-price-table tr td:nth-child(1){
+    width: 69%;
+}
+#total-price-table tr td:nth-child(2){
+    text-align: center;
+}
+#total-price-table tr td:nth-child(3){
+    text-align: center;
+}
+
+/* Orders information below */
+.addresses {
+    border: 1px solid black;
+}
+.payments {
+    border: 1px solid black;
+}
+.total-price {
+    border: 1px solid black;
+}
+#payment-method {
+    margin-bottom: 150px;
+}
+/* Order Note Below */
+#order-note {
+  resize: none;
+  float:left;
+  margin-left: 250px;
+  margin-top: 5px;  
+}
+
