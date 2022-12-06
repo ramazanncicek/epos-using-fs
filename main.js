@@ -1,11 +1,11 @@
-const { app, BrowserWindow,Menu,ipcMain, ipcRenderer,dialog } = require('electron');
+const { app, BrowsermainWindowdow,Menu,ipcMain, ipcRenderer,dialog } = require('electron');
 const path = require('path');
 const ejse = require('ejs-electron');
 const fs = require('fs');
 // CallerID Requirements below.
 const ffi = require('ffi-napi');
 const PromiseTimers = require('promise-timers');
-const myFunc = new ffi.Library('cid.dll',{
+const launchDevice = new ffi.Library('cid.dll',{
   "CidStart": ["void",[]],
   "CidData": ["string",[]]
   });
@@ -15,45 +15,46 @@ function method () {
     if (z > 5) {
         z = 0;
     } else {
-        let myStr = myFunc.CidData();
-        let mySplit = myStr.split(',');
-        if(mySplit[2] !== undefined){
-          let callingCustomer = mySplit[2];
-          // Checking if the line is active
-          let callingCustomerData = [mySplit[2],allCustomers[callingCustomer]];
+        // Raw data comes with actual time, the number. It needs to be splitted from ','
+        let unparsedData = launchDevice.CidData();
+        let parsedData = unparsedData.split(',');
+        // The third item is the number.
+        if(parsedData[2] !== undefined){
+          let callingCustomer = parsedData[2];
+          let callingCustomerData = [parsedData[2],allCustomers[callingCustomer]];
           setTimeout(function(){
-            win.webContents.send('calling-customer',callingCustomerData);
+            mainWindow.webContents.send('calling-customer',callingCustomerData);
           },1000);
-          win.loadFile('order-screen.html');
-          win.show();  
-          win.focus(); 
+          mainWindow.loadFile('order-screen.html');
+          mainWindow.show();  
+          mainWindow.focus(); 
             if(allCustomers[callingCustomer] === undefined){
-              win.show();
-              newCustomerWindow();
+              mainWindow.show();
+              newCustomermainWindowdow();
               setTimeout(function(){
                 newCustomer.webContents.send('unregistered-number',callingCustomer);
               },1000);
             }
             else {
-              let callingCustomerData = [mySplit[2],allCustomers[callingCustomer]];
+              let callingCustomerData = [parsedData[2],allCustomers[callingCustomer]];
               setTimeout(function(){
-                win.webContents.send('calling-customer',callingCustomerData);
+                mainWindow.webContents.send('calling-customer',callingCustomerData);
               },1000);
-              win.loadFile('order-screen.html');
-              win.show();  
-              win.focus(); 
+              mainWindow.loadFile('order-screen.html');
+              mainWindow.show();  
+              mainWindow.focus(); 
             }
             
         }
         z++;
     }
 };
-// Creating Main Window
-let win;
+// Creating Main mainWindowdow
+let mainWindow;
 let firedOnce = false;
 // Break
-function createWindow () {
-      win = new BrowserWindow({
+function createmainWindowdow () {
+      mainWindow = new BrowsermainWindowdow({
       width: 1500,
       height: 900,
       // titleBarStyle: 'hidden',
@@ -67,18 +68,17 @@ function createWindow () {
       }
     })
   
-    win.loadFile('index.html');
+    mainWindow.loadFile('index.html');
     if(!firedOnce){
-      myFunc.CidStart();
+      launchDevice.CidStart();
       firedOnce = true;
     }
     PromiseTimers.setInterval(200, method);
     // Restoring to Courier A
     let date = new Date();
     const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-    let ourDate = [day,month+1,year];
-    const myFolderNameA = `./backup-folders/courier-a-${day}-${month+1}.js`;
-    fs.readFile(myFolderNameA,"utf-8",(err,data)=>{
+    const courierFolderA = `./backup-folders/courier-a-${day}-${month+1}.js`;
+    fs.readFile(courierFolderA,"utf-8",(err,data)=>{
         if(err){
             console.log(err);
         }
@@ -88,8 +88,8 @@ function createWindow () {
         }
     });
     // Restoring to Courier B
-    const myFolderNameB = `./backup-folders/courier-b-${day}-${month+1}.js`;
-    fs.readFile(myFolderNameB,"utf-8",(err,data)=>{
+    const courierFolderB = `./backup-folders/courier-b-${day}-${month+1}.js`;
+    fs.readFile(courierFolderB,"utf-8",(err,data)=>{
         if(err){
             console.log(err);
         }
@@ -99,8 +99,8 @@ function createWindow () {
         }
     });
     // Restoring to Take Away Orders
-    const myTakeAwayFolder = `./backup-folders/take-aways-${day}-${month+1}.js`;
-    fs.readFile(myTakeAwayFolder,"utf-8",(err,data)=>{
+    const takeAwayFoldersAll = `./backup-folders/take-aways-${day}-${month+1}.js`;
+    fs.readFile(takeAwayFoldersAll,"utf-8",(err,data)=>{
       if(err){
           console.log(err);
       }
@@ -111,8 +111,8 @@ function createWindow () {
   });
 
     // Restoring to Daily Orders Database
-    const myFolderNameAll = `./backup-folders/backup-orders-${day}-${month+1}.js`;
-    fs.readFile(myFolderNameAll,"utf-8",(err,data)=>{
+    const courierFoldersAll = `./backup-folders/backup-orders-${day}-${month+1}.js`;
+    fs.readFile(courierFoldersAll,"utf-8",(err,data)=>{
         if(err){
             console.log(err);
         }
@@ -160,13 +160,13 @@ function createWindow () {
   };
   // The app launches.
   app.whenReady().then(() => {
-    createWindow();
+    createmainWindowdow();
   });
   // Routing Test
   
-  //Close the whole app when main window is closed.
-  app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin'){
+  //Close the whole app when main mainWindowdow is closed.
+  app.on('mainWindowdow-all-closed', function () {
+    if (process.platform !== 'darmainWindow'){
       app.quit();
     }
   });
@@ -177,16 +177,16 @@ function createWindow () {
         submenu: [
             {label: 'Menu 1'},
             {label: 'Quit',
-            accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+            accelerator: process.platform == "darmainWindow" ? "Command+Q" : "Ctrl+Q",
             click(){
             app.quit();
         }}
         ]
     }
 ];
-// New Customer Window Function
-function newCustomerWindow(){
-  newCustomer = new BrowserWindow({
+// New Customer mainWindow Function
+function newCustomermainWindowdow(){
+  newCustomer = new BrowsermainWindowdow({
     width: 400,
     height: 300,
     resizable: false,
@@ -205,9 +205,8 @@ ipcMain.on('wrong-input',function(e,arg){
 
 // Left food screen below
 let foods;
-let drinks;
-function foodWindow(area,codename,product){
-  foods = new BrowserWindow({
+function foodmainWindowdow(area,codename,product){
+  foods = new BrowsermainWindowdow({
     width: 700,
     height: 500,
     resizable: false,
@@ -218,51 +217,56 @@ function foodWindow(area,codename,product){
     }
   });
   ejse.data(codename,product);
-  if(area == "et" || area == "tavuk") {
-    foods.loadFile('./views/food-screen.ejs');
-  }
-  if(area == "kofte") {
-    foods.loadFile('./views/kofte.ejs');
-  }
-  if(area == "ayvalik"){
-    foods.loadFile('./views/ayvalik.ejs');
-  }
-  if(area == "sandvic") {
-    foods.loadFile('./views/sandvic.ejs');
-  }
-  if(area == 'icecek') {
-    foods.loadFile('./views/icecekler.ejs');
-  }
-  if(area == 'menuler') {
-    foods.loadFile('./views/menus.ejs');
+  switch(area){
+    case "et":
+      foods.loadFile('./views/food-screen.ejs');
+      break;
+    case "tavuk":
+      foods.loadFile('./views/food-screen.ejs');
+      break;
+    case "kofte":
+      foods.loadFile('./views/kofte.ejs');
+      break;
+    case "ayvalik":
+      foods.loadFile('./views/ayvalik.ejs');
+      break;
+    case "sandvic":
+      foods.loadFile('./views/sandvic.ejs');
+      break;
+    case "icecek":
+      foods.loadFile('./views/icecekler.ejs');
+      break;
+    case "menuler":
+      foods.loadFile('./views/menus.ejs');
+      break;
   }
 }
 // Food Compilation Above 
 // Food Event Listener Below
 ipcMain.on('item:et-doner',function(){
-  foodWindow('et','foodID','Et');
+  foodmainWindowdow('et','foodID','Et');
 });
 ipcMain.on('item:tavuk-doner',function(){
-  foodWindow('tavuk','foodID','Tavuk');
+  foodmainWindowdow('tavuk','foodID','Tavuk');
 });
 ipcMain.on('item:kofte',function(){
-  foodWindow('kofte','foodID','Köfte');
+  foodmainWindowdow('kofte','foodID','Köfte');
 });
 ipcMain.on('item:sandvic',function(){
-  foodWindow('sandvic','foodID','Sandviç');
+  foodmainWindowdow('sandvic','foodID','Sandviç');
 });
 ipcMain.on('item:ayvalik',function(){
-  foodWindow('ayvalik','foodID','Ayvalık');
+  foodmainWindowdow('ayvalik','foodID','Ayvalık');
 });
 ipcMain.on('item:icecekler',function(){
-  foodWindow('icecek','','');
+  foodmainWindowdow('icecek','','');
 });
 ipcMain.on('item:menuler',function(){
-  foodWindow('menuler','','');
+  foodmainWindowdow('menuler','','');
 });
 let newCustomer;
 ipcMain.on('customer:new',function(e){
-  newCustomerWindow();
+  newCustomermainWindowdow();
   newCustomer.loadFile('new-customer.html');
 });
 // Food to send orders screen below.
@@ -378,7 +382,7 @@ ipcMain.on('orders-ID',function(e,arg) {
     <td class="order-prices">${orderPrice}</td>
     <td class="order-delete-food"><button class="delete-food-button">SİL</button></td>
      </tr>`;
-  win.webContents.send('confirmed-order-id',foodOrder);
+  mainWindow.webContents.send('confirmed-order-id',foodOrder);
 });
 ipcMain.on('orders-ID:per-price',function(e,arg) {
   foodOrder = `<tr>
@@ -387,7 +391,7 @@ ipcMain.on('orders-ID:per-price',function(e,arg) {
   <td class="order-prices">${arg[1]}</td>
   <td class="order-delete-food"><button class="delete-food-button">SİL</button></td>
    </tr>`;
-win.webContents.send('confirmed-order-id',foodOrder);
+mainWindow.webContents.send('confirmed-order-id',foodOrder);
 });
 // Sending orders from order-screen to All Daily Orders
 let dailyOrdersDatabase = [];
@@ -395,10 +399,9 @@ let dailyOrdersDatabase = [];
 function savingDailyOrdersForBackup(){
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/backup-orders-${day}-${month+1}.js`;
+  const orderBackupFolders = `./backup-folders/backup-orders-${day}-${month+1}.js`;
   // Backup 
-  fs.writeFile(myFolderName,JSON.stringify(dailyOrdersDatabase),
+  fs.writeFile(orderBackupFolders,JSON.stringify(dailyOrdersDatabase),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -412,11 +415,10 @@ ipcMain.on('order-away', function(e,arg){
   saveAllCustomersBackup();
   // Backup
   savingDailyOrdersForBackup();
-  // New Backup Try
   setTimeout(function(){
-    win.webContents.send('order-away-confirmed',dailyOrdersDatabase);
+    mainWindow.webContents.send('order-away-confirmed',dailyOrdersDatabase);
   },1000);
-  win.loadFile('daily-orders.html');
+  mainWindow.loadFile('daily-orders.html');
 });
 // Cancelling An Order
 ipcMain.on('cancelling-the-order',function(e,arg){
@@ -439,21 +441,21 @@ ipcMain.on('cancelling-the-order',function(e,arg){
 })
 ipcMain.on('order:cancel-order',function(e,arg){
   setTimeout(function(){
-    win.webContents.send('order-away-confirmed',dailyOrdersDatabase);
+    mainWindow.webContents.send('order-away-confirmed',dailyOrdersDatabase);
   },1000);
-  win.loadFile('daily-orders.html');
+  mainWindow.loadFile('daily-orders.html');
 })
 // Daily Orders Handle Below
 ipcMain.on('daily-orders-click',function(e,arg){
   setTimeout(function(){
-    win.webContents.send('order-away-confirmed',dailyOrdersDatabase);
+    mainWindow.webContents.send('order-away-confirmed',dailyOrdersDatabase);
   },1000)
-  win.loadFile('daily-orders.html');
+  mainWindow.loadFile('daily-orders.html');
 });
 // Send By Number below
-let sendByNumberWin;
+let sendByNumbermainWindow;
 ipcMain.on('send-by-number',function(e,arg){
-  sendByNumberWin = new BrowserWindow({
+  sendByNumbermainWindow = new BrowsermainWindowdow({
     width: 400,
     height: 200,
     resizable: false,
@@ -463,21 +465,21 @@ ipcMain.on('send-by-number',function(e,arg){
       contextIsolation: false
     }
   });
-  sendByNumberWin.loadFile('send-by-number.html');
+  sendByNumbermainWindow.loadFile('send-by-number.html');
 });
 ipcMain.on('number-send-input',function(e,arg){
   if(arg.length == 11){
-    sendByNumberWin.close();
+    sendByNumbermainWindow.close();
     if(allCustomers[arg] !== undefined){
     let callingCustomerData = [arg,allCustomers[arg]];
             setTimeout(function(){
-              win.webContents.send('calling-customer',callingCustomerData);
+              mainWindow.webContents.send('calling-customer',callingCustomerData);
             },1000);
-            win.loadFile('order-screen.html');
-            win.show();  
+            mainWindow.loadFile('order-screen.html');
+            mainWindow.show();  
     }
     else {
-    newCustomerWindow();
+    newCustomermainWindowdow();
     setTimeout(function(){
     newCustomer.webContents.send('unregistered-number',arg);
     },1000);
@@ -489,9 +491,9 @@ ipcMain.on('number-send-input',function(e,arg){
   
 });
 // An Order Display below
-let anOrderWindow;
+let anOrdermainWindowdow;
 ipcMain.on('orders:click-order-id',function(e,arg){
-  anOrderWindow = new BrowserWindow({
+  anOrdermainWindowdow = new BrowsermainWindowdow({
     width: 900,
     height: 500,
     resizable: false,
@@ -501,8 +503,8 @@ ipcMain.on('orders:click-order-id',function(e,arg){
       contextIsolation: false
     }
   });
-  dailyOrdersDatabase.forEach(myFunc);
-  function myFunc(value){
+  dailyOrdersDatabase.forEach(launchDevice);
+  function launchDevice(value){
     if(value["Order ID"] == arg){
       let returningArr = [];
       returningArr[0] = value["Order ID"];
@@ -514,9 +516,9 @@ ipcMain.on('orders:click-order-id',function(e,arg){
       returningArr[6] = value["Customer Number"];
       returningArr[7] = value["Order Note"];
       returningArr[8] = value["Order Time"];
-      anOrderWindow.loadFile('./views/an-order.html');
-      anOrderWindow.webContents.on('did-finish-load',function(){
-        anOrderWindow.webContents.send('orders:clicked-order-details',returningArr);
+      anOrdermainWindowdow.loadFile('./views/an-order.html');
+      anOrdermainWindowdow.webContents.on('did-finish-load',function(){
+        anOrdermainWindowdow.webContents.send('orders:clicked-order-details',returningArr);
       });
     }
   };
@@ -525,9 +527,9 @@ ipcMain.on('orders:click-order-id',function(e,arg){
 // New Customer Registration below
 let allCustomers = {};
 function saveAllCustomersBackup(){
-  const myFolderName = `./backup-folders/all-customers.json`;
+  const folderName = `./backup-folders/all-customers.json`;
   // Backup 
-  fs.writeFile(myFolderName,JSON.stringify(allCustomers),
+  fs.writeFile(folderName,JSON.stringify(allCustomers),
   (err)=>{
     if(err){
       console.log('Error! All Customers are not saved.');
@@ -536,9 +538,9 @@ function saveAllCustomersBackup(){
 }
 ipcMain.on('new-customer-added',function(e,arg){
   allCustomers[arg[0]] = {name: arg[1], address: arg[2], number: arg[0]};
-  const myFolderName = `./backup-folders/all-customers.json`;
+  const folderName = `./backup-folders/all-customers.json`;
   // Backup 
-  fs.writeFile(myFolderName,JSON.stringify(allCustomers),
+  fs.writeFile(folderName,JSON.stringify(allCustomers),
   (err)=>{
     if(err){
       console.log('Error! All Customers are not saved.');
@@ -547,10 +549,10 @@ ipcMain.on('new-customer-added',function(e,arg){
   newCustomer.close();
   let callingCustomerData = [arg[0],{name: arg[1], address: arg[2],number: arg[0]}];
   setTimeout(function(){
-    win.webContents.send('calling-customer',callingCustomerData);
+    mainWindow.webContents.send('calling-customer',callingCustomerData);
   },1000);
-  win.show(); 
-  win.loadFile('order-screen.html');
+  mainWindow.show(); 
+  mainWindow.loadFile('order-screen.html');
 });
 ipcMain.on('customer-new-info:saved',function(e,arg){
   allCustomers[arg["Customer Number"]] = {name: arg["Customer Name"], address: arg["Customer Address"], number: arg["Customer Number"]};
@@ -563,8 +565,8 @@ let dailyCourierDatabaseC = [];
 let dailyTakeAwayDatabase = [];
 let courier;
 ipcMain.on('courier:id',function(e,arg){
-  function courierWindow(c){
-      courier = new BrowserWindow({
+  function couriermainWindowdow(c){
+      courier = new BrowsermainWindowdow({
       width: 800,
       height: 500,
       resizable: false,
@@ -576,7 +578,7 @@ ipcMain.on('courier:id',function(e,arg){
     });
     courier.loadFile('acourier.html');
 };
-  courierWindow();
+  couriermainWindowdow();
   courier.webContents.on('did-finish-load',function(){
     if(arg == "kurye1"){
       courier.webContents.send('id',couriersList[0].name);
@@ -601,9 +603,8 @@ ipcMain.on('order:assigned-a',function(e,arg){
   dailyCourierDatabaseA.push(arg);
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/courier-a-${day}-${month+1}.js`;
-  fs.writeFile(myFolderName,JSON.stringify(dailyCourierDatabaseA),
+  const folderName = `./backup-folders/courier-a-${day}-${month+1}.js`;
+  fs.writeFile(folderName,JSON.stringify(dailyCourierDatabaseA),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -620,9 +621,8 @@ ipcMain.on('order:assigned-c',function(e,arg){
   dailyCourierDatabaseC.push(arg);
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/courier-b-${day}-${month+1}.js`;
-  fs.writeFile(myFolderName,JSON.stringify(dailyCourierDatabaseC),
+  const folderName = `./backup-folders/courier-b-${day}-${month+1}.js`;
+  fs.writeFile(folderName,JSON.stringify(dailyCourierDatabaseC),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -678,9 +678,8 @@ ipcMain.on('take-away-assigned',function(e,arg){
   dailyTakeAwayDatabase.push(arg);
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/take-aways-${day}-${month+1}.js`;
-  fs.writeFile(myFolderName,JSON.stringify(dailyTakeAwayDatabase),
+  const folderName = `./backup-folders/take-aways-${day}-${month+1}.js`;
+  fs.writeFile(folderName,JSON.stringify(dailyTakeAwayDatabase),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -739,9 +738,9 @@ ipcMain.on('pay-the-bills', function(e,arg){
 ipcMain.on('cancel-new-customer',function(e,arg){
   newCustomer.close();
   setTimeout(function(){
-    win.webContents.send('order-away-confirmed',dailyOrdersDatabase);
+    mainWindow.webContents.send('order-away-confirmed',dailyOrdersDatabase);
   },1000);
-  win.loadFile('daily-orders.html');
+  mainWindow.loadFile('daily-orders.html');
 });
 // Debts below
 let debtsDatabase = [];
@@ -749,10 +748,9 @@ ipcMain.on('assign-a-debt',function(e,arg){
   debtsDatabase.push(arg);
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/debts-${day}-${month+1}.js`;
+  const folderName = `./backup-folders/debts-${day}-${month+1}.js`;
   // Backup 
-  fs.writeFile(myFolderName,JSON.stringify(debtsDatabase),
+  fs.writeFile(folderName,JSON.stringify(debtsDatabase),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -761,9 +759,9 @@ ipcMain.on('assign-a-debt',function(e,arg){
 });
 ipcMain.on('all-debts',function(e,arg){
   setTimeout(()=>{
-    win.webContents.send('all-debts-load',debtsDatabase);
+    mainWindow.webContents.send('all-debts-load',debtsDatabase);
   },1000);
-  win.loadFile('debts.html');
+  mainWindow.loadFile('debts.html');
 });
 var options = {
   silent: false,
@@ -780,14 +778,14 @@ var options = {
   footer: 'Footer of the Page'
 };
 ipcMain.on('print-my-order',function(e,arg){
-  anOrderWindow.webContents.print(options, (success, failureReason) => {
+  anOrdermainWindowdow.webContents.print(options, (success, failureReason) => {
     if (!success) console.log(failureReason);
 });
 });
 // Uprading the prices below
 let upgradeScreen;
 ipcMain.on('upgrade-price',function(e,arg){
-  upgradeScreen = new BrowserWindow({
+  upgradeScreen = new BrowsermainWindowdow({
     width: 1000,
     height: 600,
     autoHideMenuBar: true,
@@ -803,9 +801,8 @@ ipcMain.on('upgrade-price',function(e,arg){
 function savePrices(){
   let date = new Date();
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-  let ourDate = [day,month+1,year];
-  const myFolderName = `./backup-folders/all-prices.js`;
-  fs.writeFile(myFolderName,JSON.stringify(foodPrices),
+  const folderName = `./backup-folders/all-prices.js`;
+  fs.writeFile(folderName,JSON.stringify(foodPrices),
   (err)=>{
     if(err){
       console.log('Error!');
@@ -818,18 +815,18 @@ ipcMain.on('assigned:new-price',function(e,arg){
 });
 // Upgrading the Couriers Below
 function saveCouriersList(){
-  const myFolderName = `./backup-folders/couriers-list.js`;
-  fs.writeFile(myFolderName,JSON.stringify(couriersList),
+  const folderName = `./backup-folders/couriers-list.js`;
+  fs.writeFile(folderName,JSON.stringify(couriersList),
   (err)=>{
     if(err){
       console.log('Error!');
     };
   });
 }
-let updateCouriersWindow;
+let updateCouriersmainWindowdow;
 let couriersList = [{id:1, name:"Furkan"},{id:2, name:"Erdinç"}];
 ipcMain.on('update-couriers',function(e,arg){
-  updateCouriersWindow = new BrowserWindow({
+  updateCouriersmainWindowdow = new BrowsermainWindowdow({
     width: 500,
     height: 300,
     autoHideMenuBar: true,
@@ -840,12 +837,12 @@ ipcMain.on('update-couriers',function(e,arg){
       contextIsolation: false
     }
   });
-  updateCouriersWindow.loadFile('couriers-list.html');
+  updateCouriersmainWindowdow.loadFile('couriers-list.html');
   // setTimeout(function(){
-  //   updateCouriersWindow.webContents.send("couriers-list",couriersList);
+  //   updateCouriersmainWindowdow.webContents.send("couriers-list",couriersList);
   // },1000)
-  updateCouriersWindow.webContents.on('did-finish-load',function(){
-    updateCouriersWindow.webContents.send("couriers-list",couriersList);
+  updateCouriersmainWindowdow.webContents.on('did-finish-load',function(){
+    updateCouriersmainWindowdow.webContents.send("couriers-list",couriersList);
   })
 });
 ipcMain.on('new-courier-name',function(e,arg){
@@ -853,7 +850,7 @@ ipcMain.on('new-courier-name',function(e,arg){
   saveCouriersList();
 });
 ipcMain.on('couriers-loaded',function(e,arg){
-  win.webContents.send("couriers-loaded:reply",couriersList);
+  mainWindow.webContents.send("couriers-loaded:reply",couriersList);
 })
 
 
@@ -864,9 +861,9 @@ if(process.env.NODE_ENV !== 'production'){
       label: "Developer Tools",
       submenu: [{
           label: 'Toggle DevTools',
-          accelerator: process.platfrom == "darwin" ? "Command+I" : "Ctrl+I",
-          click(item,focusedWindow){
-              focusedWindow.toggleDevTools();
+          accelerator: process.platfrom == "darmainWindow" ? "Command+I" : "Ctrl+I",
+          click(item,focusedmainWindowdow){
+              focusedmainWindowdow.toggleDevTools();
           }
       },
   {role: 'reload'}]
