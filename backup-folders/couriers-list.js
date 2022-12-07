@@ -1,1 +1,0 @@
-[{"id":1,"name":"Furkan"},{"id":2,"name":"Erdinç"}]

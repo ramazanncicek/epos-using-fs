@@ -1,1 +1,0 @@
-[["Ramazan çiçek","215.sk no:12 d:4 Kazımdirik mah.","Nakit","100","1"]]
